@@ -1,0 +1,57 @@
+name: Gerar APK Android
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-android:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Dependências Linux
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            git zip unzip autoconf automake autopoint libtool pkg-config \
+            zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev gettext \
+            ccache patch wget curl libltdl-dev
+
+      - name: Buildozer
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install "buildozer==1.6.0" "cython==0.29.34"
+
+      - name: Verificar Python
+        run: python -m compileall .
+
+      - name: Compilar APK
+        env:
+          BUILDOZER_WARN_ON_ROOT: "0"
+          APP_ANDROID_ACCEPT_SDK_LICENSE: "1"
+        run: buildozer -v android debug
+
+      - name: Publicar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: GestureVoice-Pro-APK
+          path: bin/*.apk
+          if-no-files-found: error
+          retention-days: 30
