@@ -1,0 +1,1 @@
+<resources><string name="app_name">GestureVoice</string><string name="accessibility_description">Performs saved gestures only when listening is enabled and a trigger is recognized. Enable manually in accessibility settings.</string><string name="notification_channel">Listening</string></resources>

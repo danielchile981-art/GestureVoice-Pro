@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GestureVoice</string>
+    <string name="accessibility_description">Executa somente gestos salvos quando você ativa a escuta e um gatilho é reconhecido. Ative manualmente nas configurações de acessibilidade.</string>
+    <string name="notification_channel">Escuta ativa</string>
+</resources>

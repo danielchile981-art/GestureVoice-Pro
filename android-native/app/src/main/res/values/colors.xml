@@ -1,0 +1,7 @@
+<resources>
+    <color name="night">#0B0F1A</color><color name="surface">#131A2B</color>
+    <color name="cyan">#00E5FF</color><color name="violet">#7C4DFF</color>
+    <color name="pink">#FF2E93</color><color name="mint">#00FFA3</color>
+    <color name="warning">#FFB020</color><color name="error">#FF3D71</color>
+    <color name="secondary_text">#A8B2C7</color>
+</resources>
