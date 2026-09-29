@@ -1,0 +1,1 @@
+<resources><string name="app_name">GestureVoice</string><string name="accessibility_description">Ejecuta los gestos guardados solo cuando la escucha está activa y se reconoce un activador. Actívalo manualmente en los ajustes de accesibilidad.</string><string name="notification_channel">Escucha activa</string></resources>
